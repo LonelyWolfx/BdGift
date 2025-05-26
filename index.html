@@ -1,64 +1,162 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Para Ella — Como una Esmeralda</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+  <title>Como una esmeralda</title>
+  <link rel="icon" type="image/png" href="emerald-favicon.png" /> <!-- Replace with actual favicon path -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
-      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      color: #e5e5e5;
+      padding: 0;
+      height: 100%;
       font-family: 'Playfair Display', serif;
-      line-height: 1.6;
-      padding: 3rem;
-      position: relative;
+      color: #e0ffe6;
+      background: linear-gradient(rgba(0, 0, 20, 0.8), rgba(0, 0, 30, 0.9)), url('https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-attachment: fixed;
+      overflow-x: hidden;
     }
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      text-align: center;
-      color: #9fe2bf;
-      font-size: 3rem;
-    }
-    .letter {
-      max-width: 800px;
+
+    .container {
+      max-width: 900px;
       margin: auto;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px #0f0;
+      padding: 4rem 2rem;
+      background: rgba(0, 20, 20, 0.6);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 255, 128, 0.3);
+      animation: fadeIn 2s ease-in-out;
     }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: #7fffd4;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px #50fa7b;
+    }
+
+    p {
+      margin-bottom: 1.6rem;
+      font-size: 1.15rem;
+      line-height: 1.8;
+    }
+
     .quote {
       text-align: center;
       font-style: italic;
       margin-top: 2rem;
-      color: #a0f0d0;
+      font-size: 1.2rem;
+      color: #b2ffcc;
     }
-    .audio {
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .floating-stars {
       position: fixed;
-      top: 10px;
-      right: 10px;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
     }
   </style>
 </head>
+
 <body>
-  <div class="audio">
-    <audio controls autoplay loop>
-      <source src="your-soundtrack.mp3" type="audio/mpeg">
-      Tu navegador no soporta audio HTML5.
-    </audio>
+  <audio autoplay loop>
+    <source src="your-soundtrack.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <canvas class="floating-stars"></canvas>
+
+  <div class="container">
+    <h1>Para Ti, En Tu Día Especial</h1>
+    <p>Así como el destello del cuerpo celestial que nos indica el amanecer de un nuevo día se posa sobre ti una vez más, la luz ténue de tu ser ilumina con vasta intensidad la existencia de los seres que tienen la dicha de compartir tu presencia.</p>
+    <p>Día a día, te entregas a este plano existencial donde vives diversas experiencias, trazando el camino a un futuro que anhelas, viviendo a la merced de un sueño, uno que, con cada paso que tomas, se convierte menos en una ilusión y más en una promesa.</p>
+    <p>Tu ser es hogar de sentimientos genuinos, no guiados por la razón, sino por el susurro noble de tu corazón; Positivismo el cual contagia felicidad a todos aquellos que te rodean, un carisma que se complementa perfectamente con tu personalidad, muchos talentos los cuales siempre son dignos de reconocimiento y apreciación, una bondad sincera que no discrimina a nadie en particular e irradia una ternura indescriptible, un cariño que es tan vasto como el mar de estrellas que nos acompaña por las noches, una personalidad muy particular la cual es confidente, divertida y refinada; Y, como la esmeralda, tu presencia irradia una luz serena, pero que a la vez, deslumbra por la calidez que guardas en tu interior.</p>
+
+    <p>Admiración y mucho cariño son algunas de las palabras que se acercan a lo que siento al tener el privilegio de compartir cualquier momento contigo. Tu positivismo siempre ha sido un regalo para mi, el cual me ha inspirado a encontrar la belleza en lo cotidiano, así como tus reflexiones sobre la vida y comentarios hacia mi misma persona me han llenado de una felicidad que es difícil de describir en simples palabras. El pasar de tu presencia en mi vida ya ha dejado una huella serena pero imborrable, como los trazos suaves de una joya sobre el cristal.</p>
+
+    <p>Quiero darte las gracias por cada gesto de amabilidad, por cada palabra de aliento que me ha motivado a dar lo mejor de mi en tiempos donde más lo necesitaba, y por demostrarme que el tiempo que compartimos juntos es un tesoro que no se compara a ningún otro. Tu presencia transforma los momentos más monótonos en experiencias llenas de color, y tu cariño es el regalo más sincero que he recibido en mucho tiempo.</p>
+
+    <p>Deseo de todo corazón que cada año que se avecine te regale nuevos motivos para sonreír, que los sueños que cultives con tanto esmero florezcan en todo su esplendor, y, confío ciegamente en que seguirás brillando intensamente como la gema preciosa que eres.</p>
+
+    <p>Que la bendición de papá Faker te acompañe siempre, y espero que nunca falte alguien en tu vida que te recuerde lo especial que eres, y de no tener a alguien que lo haga, ten por seguro que yo lo haré por ti.</p>
+
+    <p class="quote">“The most precious emerald isn’t the one that blinds with brilliance, but the one that returns a soft and warm shine to those who behold it.”</p>
   </div>
 
-  <h1>Como una Esmeralda</h1>
-  <div class="letter">
-    <p>Así como el destello del cuerpo celestial que nos indica el amanecer de un nuevo día...</p>
-    <!-- Add rest of your letter here in <p> blocks -->
+  <script>
+    const canvas = document.querySelector('.floating-stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
 
-    <div class="quote">
-      The most precious emerald isn’t the one that blinds with brilliance,<br>
-      but the one that returns a soft and warm shine to those who behold it.
-    </div>
-  </div>
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars(count) {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5 + 0.5,
+          alpha: Math.random(),
+          dx: (Math.random() - 0.5) * 0.2,
+          dy: (Math.random() - 0.5) * 0.2
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+        ctx.fill();
+
+        star.x += star.dx;
+        star.y += star.dy;
+
+        if (star.x < 0 || star.x > canvas.width || star.y < 0 || star.y > canvas.height) {
+          star.x = Math.random() * canvas.width;
+          star.y = Math.random() * canvas.height;
+        }
+      }
+      requestAnimationFrame(drawStars);
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createStars(100);
+    });
+
+    resizeCanvas();
+    createStars(100);
+    drawStars();
+  </script>
 </body>
+
 </html>
