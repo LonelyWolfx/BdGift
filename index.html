@@ -81,11 +81,15 @@
 </head>
 
 <body>
+  <!--
   <audio autoplay loop>
     <source src="your-soundtrack.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-
+-->
+  <audio id="bg-music" autoplay loop muted>
+    <source src="assets/audio/test-ost.mp3" type="audio/mpeg">
+  </audio>
   <canvas class="floating-stars"></canvas>
 
   <div class="container">
@@ -153,8 +157,14 @@
       createStars(100);
     });
 
+    window.addEventListener('click', () => {
+    const music = document.getElementById('bg-music');
+    music.muted = false;
+    music.play();
+  }, { once: true });
+
     resizeCanvas();
-    createStars(100);
+    createStars(169);
     drawStars();
   </script>
 </body>
