@@ -14,8 +14,11 @@
       height: 100%;
       font-family: 'Playfair Display', serif;
       color: #e0ffe6;
-      background: linear-gradient(rgba(0, 0, 20, 0.8), rgba(0, 0, 30, 0.9)), url('https://static.vecteezy.com/system/resources/thumbnails/054/390/088/small_2x/the-milky-way-galaxy-and-stars-in-the-night-sky-photo.jpg');
+      background: linear-gradient(rgba(0, 0, 20, 0.8), rgba(0, 0, 30, 0.9)), 
+                  url('https://static.vecteezy.com/system/resources/thumbnails/054/390/088/small_2x/the-milky-way-galaxy-and-stars-in-the-night-sky-photo.jpg');
       background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
       background-attachment: fixed;
       overflow-x: hidden;
     }
@@ -82,48 +85,49 @@
       50% { transform: translateY(-20px) rotate(180deg); }
       100% { transform: translateY(0) rotate(360deg); }
     }
+
     #intro-screen {
-  position: fixed;
-  z-index: 999;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(180deg, #001010, #003333);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 1s ease, visibility 1s ease;
-}
+      position: fixed;
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(180deg, #001010, #003333);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
 
-#gift-box {
-  width: 200px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 1s ease;
-}
+    #gift-box {
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 1s ease;
+    }
 
-/* Animation class when clicked */
-.unwrap-animation {
-  animation: unwrap 1s forwards;
-}
+    .unwrap-animation {
+    animation: unwrap 1s forwards;
+    }
 
-@keyframes unwrap {
-  0% {
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.2) rotate(10deg);
-  }
-  100% {
-    transform: scale(0) rotate(360deg);
+    @keyframes unwrap {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg);
+    }
+    100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
+    }
+
+    #intro-screen.fade-out {
     opacity: 0;
-  }
-}
+    visibility: hidden;
+    }
 
-#intro-screen.fade-out {
-  opacity: 0;
-  visibility: hidden;
-}
   </style>
 </head>
 
@@ -132,14 +136,9 @@
     <source src="assets/audio/test-ost.mp3" type="audio/mpeg">
     No music?
   </audio>
-  <canvas class="floating-stars"></canvas>
-  <!-- <div id="emeralds"></div> -->
 
-  <!-- <div id="intro-screen">
-    <div class="gift-message">
-      <h1>🎁 A small gift for you...</h1>
-    </div>
-  </div> -->
+  <canvas class="floating-stars"></canvas>
+
   <div id="intro-screen">
     <img id="gift-box" src="assets/images/Gift.gif" alt="A gift for you" />
   </div>
@@ -162,77 +161,6 @@
     <p class="quote">“The most precious emerald isn’t the one that blinds with brilliance, but the one that returns a soft and warm shine to those who behold it.”</p>
   </div>
 
-  <!-- <script>
-    const canvas = document.querySelector('.floating-stars');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    function createStars(count) {
-      stars = [];
-      for (let i = 0; i < count; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 1.5 + 0.5,
-          alpha: Math.random(),
-          dx: (Math.random() - 0.5) * 0.2,
-          dy: (Math.random() - 0.5) * 0.2
-        });
-      }
-    }
-
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let star of stars) {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-        ctx.fill();
-
-        star.x += star.dx;
-        star.y += star.dy;
-
-        if (star.x < 0 || star.x > canvas.width || star.y < 0 || star.y > canvas.height) {
-          star.x = Math.random() * canvas.width;
-          star.y = Math.random() * canvas.height;
-        }
-      }
-      requestAnimationFrame(drawStars);
-    }
-
-    function createEmeralds(count) {
-      const emeraldsContainer = document.getElementById('emeralds');
-      for (let i = 0; i < count; i++) {
-        const emerald = document.createElement('div');
-        emerald.classList.add('emerald');
-        emerald.style.top = `${Math.random() * 100}%`;
-        emerald.style.left = `${Math.random() * 100}%`;
-        emerald.style.animationDelay = `${Math.random() * 10}s`;
-        emeraldsContainer.appendChild(emerald);
-      }
-    }
-
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      createStars(100);
-    });
-
-    window.addEventListener('click', () => {
-      const music = document.getElementById('bg-music');
-      music.muted = false;
-      music.play();
-    }, { once: true });
-
-    resizeCanvas();
-    createStars(169);
-    drawStars();
-    createEmeralds(30);
-  </script> -->
   <script>
     const canvas = document.querySelector('.floating-stars');
     const ctx = canvas.getContext('2d');
@@ -242,15 +170,15 @@
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      createStars(100);
-      createEmeralds(30);
+      createStars(169);
+      createEmeralds(69);
     }
   
     function createStars(count) {
       stars = [];
       for (let i = 0; i < count; i++) {
         stars.push({
-          x: Math.random() * canvas.width,
+            x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           radius: Math.random() * 1.5 + 0.5,
           alpha: Math.random(),
@@ -289,88 +217,57 @@
         }
       }
     }
-  
-    // function drawPixelEmerald(x, y, size) {
-    //   const px = size / 4;
-    //   ctx.fillStyle = '#00ffcc';
-    //   ctx.fillRect(x, y, px, px);
-    //   ctx.fillStyle = '#00cc99';
-    //   ctx.fillRect(x + px, y, px, px);
-    //   ctx.fillStyle = '#009977';
-    //   ctx.fillRect(x + 2 * px, y, px, px);
-    //   ctx.fillStyle = '#00ccaa';
-    //   ctx.fillRect(x + px, y + px, px, px);
-    //   ctx.fillStyle = '#00775f';
-    //   ctx.fillRect(x + px, y + 2 * px, px, px);
-    //   ctx.fillStyle = '#004d3f';
-    //   ctx.fillRect(x + px, y + 3 * px, px, px);
-    // }
     function drawPixelEmerald(x, y, size) {
-  const px = size / 4; // Break emerald into 4x5 grid
+        const px = size / 4; // 4x5 grid
 
-  // Colors for shading
-  const light = '#00ffcc'; // highlight
-  const mid = '#00cc99';   // main color
-  const dark = '#00775f';  // shadow
+        // Shading
+        const light = '#00ffcc'; // highlight
+        const mid = '#00cc99';   // main color
+        const dark = '#00775f';  // shadow
 
-  // Row 1
-  ctx.fillStyle = light;
-  ctx.fillRect(x + px, y, px, px);
-  ctx.fillRect(x + 2 * px, y, px, px);
+        // Row 1
+        ctx.fillStyle = light;
+        ctx.fillRect(x + px, y, px, px);
+        ctx.fillRect(x + 2 * px, y, px, px);
 
-  // Row 2
-  ctx.fillStyle = mid;
-  ctx.fillRect(x, y + px, px, px);
-  ctx.fillRect(x + 3 * px, y + px, px, px);
-  ctx.fillStyle = light;
-  ctx.fillRect(x + px, y + px, px, px);
-  ctx.fillStyle = mid;
-  ctx.fillRect(x + 2 * px, y + px, px, px);
+        // Row 2
+        ctx.fillStyle = mid;
+        ctx.fillRect(x, y + px, px, px);
+        ctx.fillRect(x + 3 * px, y + px, px, px);
+        ctx.fillStyle = light;
+        ctx.fillRect(x + px, y + px, px, px);
+        ctx.fillStyle = mid;
+        ctx.fillRect(x + 2 * px, y + px, px, px);
 
-  // Row 3
-  ctx.fillStyle = mid;
-  ctx.fillRect(x, y + 2 * px, px, px);
-  ctx.fillRect(x + 3 * px, y + 2 * px, px, px);
-  ctx.fillStyle = light;
-  ctx.fillRect(x + px, y + 2 * px, px, px);
-  ctx.fillStyle = dark;
-  ctx.fillRect(x + 2 * px, y + 2 * px, px, px);
+        // Row 3
+        ctx.fillStyle = mid;
+        ctx.fillRect(x, y + 2 * px, px, px);
+        ctx.fillRect(x + 3 * px, y + 2 * px, px, px);
+        ctx.fillStyle = light;
+        ctx.fillRect(x + px, y + 2 * px, px, px);
+        ctx.fillStyle = dark;
+        ctx.fillRect(x + 2 * px, y + 2 * px, px, px);
 
-  // Row 4
-  ctx.fillStyle = dark;
-  ctx.fillRect(x, y + 3 * px, px, px);
-  ctx.fillRect(x + 3 * px, y + 3 * px, px, px);
-  ctx.fillStyle = mid;
-  ctx.fillRect(x + px, y + 3 * px, px, px);
-  ctx.fillStyle = dark;
-  ctx.fillRect(x + 2 * px, y + 3 * px, px, px);
+        // Row 4
+        ctx.fillStyle = dark;
+        ctx.fillRect(x, y + 3 * px, px, px);
+        ctx.fillRect(x + 3 * px, y + 3 * px, px, px);
+        ctx.fillStyle = mid;
+        ctx.fillRect(x + px, y + 3 * px, px, px);
+        ctx.fillStyle = dark;
+        ctx.fillRect(x + 2 * px, y + 3 * px, px, px);
 
-  // Row 5
-  ctx.fillStyle = dark;
-  ctx.fillRect(x + px, y + 4 * px, px, px);
-  ctx.fillRect(x + 2 * px, y + 4 * px, px, px);
-}
+        // Row 5
+        ctx.fillStyle = dark;
+        ctx.fillRect(x + px, y + 4 * px, px, px);
+        ctx.fillRect(x + 2 * px, y + 4 * px, px, px);
+    }
     function drawEmeralds(frame) {
       for (let emerald of emeralds) {
         const floatY = Math.sin((frame + emerald.offset) / 50) * 5;
         drawPixelEmerald(emerald.x, emerald.baseY + floatY, emerald.size);
       }
-    }
-
-    function drawSparkle(x, y, size) {
-  const sparkleCount = 3; // number of sparkles per emerald
-  const px = size / 4;
-
-  for (let i = 0; i < sparkleCount; i++) {
-    if (Math.random() < 0.2) { // 20% chance to show sparkle per frame
-      const sx = x + Math.floor(Math.random() * 4) * px;
-      const sy = y + Math.floor(Math.random() * 5) * px;
-
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-      ctx.fillRect(sx, sy, px / 2, px / 2); // tiny sparkle
-    }
-  }
-}  
+    } 
     function drawScene(frame = 0) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawStars();
@@ -379,58 +276,35 @@
     }
   
     window.addEventListener('resize', resizeCanvas);
-    // window.addEventListener('click', () => {
-    //   const music = document.getElementById('bg-music');
-    //   music.muted = false;
-    //   music.play();
-    // }, { once: true });
   
     resizeCanvas();
     drawScene();
 
-//     const intro = document.getElementById('intro-screen');
-// const music = document.getElementById('bg-music');
-// const container = document.querySelector('.container');
+    //Animated gift box on entry
+    const intro = document.getElementById('intro-screen');
+    const music = document.getElementById('bg-music');
+    const container = document.querySelector('.container');
+    const giftBox = document.getElementById('gift-box');
 
-// // Initially hide the main content
-// container.style.display = 'none';
+    container.style.display = 'none';
 
-// // On first click, reveal everything
-// intro.addEventListener('click', () => {
-//   intro.classList.add('fade-out');
+    giftBox.addEventListener('click', () => {
+    giftBox.classList.add('unwrap-animation');
 
-//   setTimeout(() => {
-//     intro.style.display = 'none';
-//     container.style.display = 'block';
-//     music.muted = false;
-//     music.play();
-//   }, 1000); // wait for fade out
-// });
+    // Animation timer on finish
+    setTimeout(() => {
+        intro.classList.add('fade-out');
+    }, 1000);
 
-const intro = document.getElementById('intro-screen');
-const music = document.getElementById('bg-music');
-const container = document.querySelector('.container');
-const giftBox = document.getElementById('gift-box');
-
-container.style.display = 'none';
-
-giftBox.addEventListener('click', () => {
-  giftBox.classList.add('unwrap-animation');
-
-  // Wait for the animation to finish (~1s)
-  setTimeout(() => {
-    intro.classList.add('fade-out');
-  }, 1000);
-
-  // After fade out (~2s total), show content & music
-  setTimeout(() => {
-    intro.style.display = 'none';
-    container.style.display = 'block';
-    music.muted = false;
-    music.play();
-  }, 2000);
-});
+    // After fade out (~2s total), show content & music
+    setTimeout(() => {
+        intro.style.display = 'none';
+        container.style.display = 'block';
+        music.stop();
+        music.muted = false;
+        music.play();
+    }, 2000);
+    });
   </script>
 </body>
-
 </html>
