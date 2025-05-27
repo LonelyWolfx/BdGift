@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Como una esmeralda</title>
-  <link rel="icon" type="image/png" href="emerald-favicon.png" /> <!-- Replace with actual favicon path -->
+  <link rel="icon" type="image/png" href="emerald-favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -28,6 +28,8 @@
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(0, 255, 128, 0.3);
       animation: fadeIn 2s ease-in-out;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -65,32 +67,31 @@
       z-index: 0;
     }
 
-    .star {
+    .emerald {
       position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      animation: twinkle 2s infinite ease-in-out;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(ellipse at center, #7fffd4 0%, #009977 70%, #004d3f 100%);
+      border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
+      animation: floatEmerald 10s linear infinite;
+      opacity: 0.7;
     }
 
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
+    @keyframes floatEmerald {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+      100% { transform: translateY(0) rotate(360deg); }
     }
   </style>
 </head>
 
 <body>
-  <!--
-  <audio autoplay loop>
-    <source src="your-soundtrack.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
--->
   <audio id="bg-music" autoplay loop muted>
     <source src="assets/audio/test-ost.mp3" type="audio/mpeg">
+    No music?
   </audio>
   <canvas class="floating-stars"></canvas>
+  <!-- <div id="emeralds"></div> -->
 
   <div class="container">
     <h1>Como una Esmeralda</h1>
@@ -109,7 +110,7 @@
     <p class="quote">“The most precious emerald isn’t the one that blinds with brilliance, but the one that returns a soft and warm shine to those who behold it.”</p>
   </div>
 
-  <script>
+  <!-- <script>
     const canvas = document.querySelector('.floating-stars');
     const ctx = canvas.getContext('2d');
     let stars = [];
@@ -152,20 +153,174 @@
       requestAnimationFrame(drawStars);
     }
 
+    function createEmeralds(count) {
+      const emeraldsContainer = document.getElementById('emeralds');
+      for (let i = 0; i < count; i++) {
+        const emerald = document.createElement('div');
+        emerald.classList.add('emerald');
+        emerald.style.top = `${Math.random() * 100}%`;
+        emerald.style.left = `${Math.random() * 100}%`;
+        emerald.style.animationDelay = `${Math.random() * 10}s`;
+        emeraldsContainer.appendChild(emerald);
+      }
+    }
+
     window.addEventListener('resize', () => {
       resizeCanvas();
       createStars(100);
     });
 
     window.addEventListener('click', () => {
-    const music = document.getElementById('bg-music');
-    music.muted = false;
-    music.play();
-  }, { once: true });
+      const music = document.getElementById('bg-music');
+      music.muted = false;
+      music.play();
+    }, { once: true });
 
     resizeCanvas();
     createStars(169);
     drawStars();
+    createEmeralds(30);
+  </script> -->
+  <script>
+    const canvas = document.querySelector('.floating-stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    let emeralds = [];
+  
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      createStars(100);
+      createEmeralds(30);
+    }
+  
+    function createStars(count) {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5 + 0.5,
+          alpha: Math.random(),
+          dx: (Math.random() - 0.5) * 0.2,
+          dy: (Math.random() - 0.5) * 0.2
+        });
+      }
+    }
+  
+    function createEmeralds(count) {
+      emeralds = [];
+      for (let i = 0; i < count; i++) {
+        emeralds.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          baseY: Math.random() * canvas.height,
+          offset: Math.random() * 100,
+          size: Math.random() * 8 + 8 // pixel art emerald size
+        });
+      }
+    }
+  
+    function drawStars() {
+      for (let star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+        ctx.fill();
+  
+        star.x += star.dx;
+        star.y += star.dy;
+  
+        if (star.x < 0 || star.x > canvas.width || star.y < 0 || star.y > canvas.height) {
+          star.x = Math.random() * canvas.width;
+          star.y = Math.random() * canvas.height;
+        }
+      }
+    }
+  
+    // function drawPixelEmerald(x, y, size) {
+    //   const px = size / 4;
+    //   ctx.fillStyle = '#00ffcc';
+    //   ctx.fillRect(x, y, px, px);
+    //   ctx.fillStyle = '#00cc99';
+    //   ctx.fillRect(x + px, y, px, px);
+    //   ctx.fillStyle = '#009977';
+    //   ctx.fillRect(x + 2 * px, y, px, px);
+    //   ctx.fillStyle = '#00ccaa';
+    //   ctx.fillRect(x + px, y + px, px, px);
+    //   ctx.fillStyle = '#00775f';
+    //   ctx.fillRect(x + px, y + 2 * px, px, px);
+    //   ctx.fillStyle = '#004d3f';
+    //   ctx.fillRect(x + px, y + 3 * px, px, px);
+    // }
+    function drawPixelEmerald(x, y, size) {
+  const px = size / 4; // Break emerald into 4x5 grid
+
+  // Colors for shading
+  const light = '#00ffcc'; // highlight
+  const mid = '#00cc99';   // main color
+  const dark = '#00775f';  // shadow
+
+  // Row 1
+  ctx.fillStyle = light;
+  ctx.fillRect(x + px, y, px, px);
+  ctx.fillRect(x + 2 * px, y, px, px);
+
+  // Row 2
+  ctx.fillStyle = mid;
+  ctx.fillRect(x, y + px, px, px);
+  ctx.fillRect(x + 3 * px, y + px, px, px);
+  ctx.fillStyle = light;
+  ctx.fillRect(x + px, y + px, px, px);
+  ctx.fillStyle = mid;
+  ctx.fillRect(x + 2 * px, y + px, px, px);
+
+  // Row 3
+  ctx.fillStyle = mid;
+  ctx.fillRect(x, y + 2 * px, px, px);
+  ctx.fillRect(x + 3 * px, y + 2 * px, px, px);
+  ctx.fillStyle = light;
+  ctx.fillRect(x + px, y + 2 * px, px, px);
+  ctx.fillStyle = dark;
+  ctx.fillRect(x + 2 * px, y + 2 * px, px, px);
+
+  // Row 4
+  ctx.fillStyle = dark;
+  ctx.fillRect(x, y + 3 * px, px, px);
+  ctx.fillRect(x + 3 * px, y + 3 * px, px, px);
+  ctx.fillStyle = mid;
+  ctx.fillRect(x + px, y + 3 * px, px, px);
+  ctx.fillStyle = dark;
+  ctx.fillRect(x + 2 * px, y + 3 * px, px, px);
+
+  // Row 5
+  ctx.fillStyle = dark;
+  ctx.fillRect(x + px, y + 4 * px, px, px);
+  ctx.fillRect(x + 2 * px, y + 4 * px, px, px);
+}
+    function drawEmeralds(frame) {
+      for (let emerald of emeralds) {
+        const floatY = Math.sin((frame + emerald.offset) / 50) * 5;
+        drawPixelEmerald(emerald.x, emerald.baseY + floatY, emerald.size);
+      }
+    }
+  
+    function drawScene(frame = 0) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawStars();
+      drawEmeralds(frame);
+      requestAnimationFrame(() => drawScene(frame + 1));
+    }
+  
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('click', () => {
+      const music = document.getElementById('bg-music');
+      music.muted = false;
+      music.play();
+    }, { once: true });
+  
+    resizeCanvas();
+    drawScene();
   </script>
 </body>
 
