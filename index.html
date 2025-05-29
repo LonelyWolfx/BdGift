@@ -133,7 +133,7 @@
 
 <body>
   <audio id="bg-music" autoplay loop muted>
-    <source src="assets/audio/test.mp3" type="audio/mpeg">
+    <source src="assets/audio/APieceForYou.mp3" type="audio/mpeg">
     No music?
   </audio>
 
@@ -196,7 +196,7 @@
           y: Math.random() * canvas.height,
           baseY: Math.random() * canvas.height,
           offset: Math.random() * 100,
-          size: Math.random() * 8 + 8 // pixel art emerald size
+          size: Math.random() * 8 + 8 
         });
       }
     }
@@ -262,12 +262,14 @@
         ctx.fillRect(x + px, y + 4 * px, px, px);
         ctx.fillRect(x + 2 * px, y + 4 * px, px, px);
     }
+    
     function drawEmeralds(frame) {
       for (let emerald of emeralds) {
         const floatY = Math.sin((frame + emerald.offset) / 50) * 5;
         drawPixelEmerald(emerald.x, emerald.baseY + floatY, emerald.size);
       }
     } 
+    
     function drawScene(frame = 0) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawStars();
@@ -280,7 +282,7 @@
     resizeCanvas();
     drawScene();
 
-    //Animated gift box on entry
+    //Animated GiftBox & background music handler
     const intro = document.getElementById('intro-screen');
     const music = document.getElementById('bg-music');
     const container = document.querySelector('.container');
@@ -291,12 +293,12 @@
     giftBox.addEventListener('click', () => {
     giftBox.classList.add('unwrap-animation');
 
-    // Animation timer on finish
+    // Animation timer
     setTimeout(() => {
         intro.classList.add('fade-out');
     }, 1000);
 
-    // After fade out (~2s total), show content & music
+    // After fade out of 2 seconds change to main content and music
     setTimeout(() => {
         intro.style.display = 'none';
         container.style.display = 'block';
