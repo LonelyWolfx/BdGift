@@ -5,9 +5,10 @@
   
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como una esmeralda</title>
+  <title>A Shiny Emerald</title>
   <link rel="icon" href="favicon.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <!--CSS fun, yaaaaaay...-->
   <style>
     html, body {
       margin: 0;
@@ -129,7 +130,6 @@
     visibility: hidden;
     }
   </style>
-  
   <script async src="https://cdn.counter.dev/script.js" data-id="89a7050c-1d6f-4bff-8475-7f1a1d47256a" data-utcoffset="-7"></script>
 </head>
 
@@ -145,9 +145,8 @@
     <img id="gift-box" src="assets/images/Gift.gif" alt="A gift for you" />
   </div>
   
-
   <div class="container">
-    <h1>Como una Esmeralda</h1>
+    <h1>Bajo la luz de una Esmeralda</h1>
     <p>Así como el destello del cuerpo celestial que nos indica el amanecer de un nuevo día se posa sobre ti una vez más, la luz ténue de tu ser ilumina con vasta intensidad la existencia de los seres que tienen la dicha de compartir tu presencia.</p>
     <p>Día a día, te entregas a este plano existencial donde vives diversas experiencias, trazando el camino a un futuro que anhelas, viviendo a la merced de un sueño, uno que, con cada paso que tomas, se convierte menos en una ilusión y más en una promesa.</p>
     <p>Tu ser es hogar de sentimientos genuinos, no guiados por la razón, sino por el susurro noble de tu corazón; Positivismo el cual contagia felicidad a todos aquellos que te rodean, un carisma que se complementa perfectamente con tu personalidad, muchos talentos los cuales siempre son dignos de reconocimiento y apreciación, una bondad sincera que no discrimina a nadie en particular e irradia una ternura indescriptible, un cariño que es tan vasto como el mar de estrellas que nos acompaña por las noches, una personalidad muy particular la cual es confidente, divertida y refinada; Y, como la esmeralda, tu presencia irradia una luz serena, pero que a la vez, deslumbra por la calidez que guardas en tu interior.</p>
@@ -168,19 +167,21 @@
     const ctx = canvas.getContext('2d');
     let stars = [];
     let emeralds = [];
-  
+
+    //Redibuja toda la escena dentro del canvas cada que se presenta el evento resize (cambio de resolución en computadora y celular)
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       createStars(169);
       createEmeralds(30);
     }
-  
+
+    //Crea el espacio donde estarán las estrellas con tamaño aleatorio
     function createStars(count) {
       stars = [];
       for (let i = 0; i < count; i++) {
         stars.push({
-            x: Math.random() * canvas.width,
+          x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           radius: Math.random() * 1.5 + 0.5,
           alpha: Math.random(),
@@ -189,7 +190,8 @@
         });
       }
     }
-  
+
+    //Crea el espacio de dibujado para las esmeraldas
     function createEmeralds(count) {
       emeralds = [];
       for (let i = 0; i < count; i++) {
@@ -202,7 +204,8 @@
         });
       }
     }
-  
+
+    //Se dibujan las estrellas con su respectivo camino aleatorio
     function drawStars() {
       for (let star of stars) {
         ctx.beginPath();
@@ -219,6 +222,17 @@
         }
       }
     }
+
+    //Se crea el evento para dibujar las esmeraldas con efecto flotante
+    //Dentro de este evento, se dibujan las esmeraldas llamando al evento DrawPixelEmerald
+    function drawEmeralds(frame) {
+      for (let emerald of emeralds) {
+        const floatY = Math.sin((frame + emerald.offset) / 50) * 5;
+        drawPixelEmerald(emerald.x, emerald.baseY + floatY, emerald.size);
+      }
+    } 
+
+    //Se dibujan las esmeraldas a mano (en pixel art style)
     function drawPixelEmerald(x, y, size) {
         const px = size / 4; // 4x5 grid
 
@@ -264,27 +278,26 @@
         ctx.fillRect(x + px, y + 4 * px, px, px);
         ctx.fillRect(x + 2 * px, y + 4 * px, px, px);
     }
-    
-    function drawEmeralds(frame) {
-      for (let emerald of emeralds) {
-        const floatY = Math.sin((frame + emerald.offset) / 50) * 5;
-        drawPixelEmerald(emerald.x, emerald.baseY + floatY, emerald.size);
-      }
-    } 
-    
+
+    //Self explanatory, dibuja toda la escena del canvas
     function drawScene(frame = 0) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawStars();
       drawEmeralds(frame);
       requestAnimationFrame(() => drawScene(frame + 1));
     }
-  
+
+    //Event listener para el evento resize 
     window.addEventListener('resize', resizeCanvas);
   
     resizeCanvas();
     drawScene();
 
-    //Animated GiftBox & background music handler
+    //Animated GiftBox & background music handler <- Agregado después de la carta
+    //Debido a que primero tiene que haber una interacción con la página para 
+    //reproducir un audio, si no el navegador bloquea la música automáticamente
+    //sin la posibilidad de reproducirla subsecuentemente
+    //Pero al agregar algo así se mira más bonito :D
     const intro = document.getElementById('intro-screen');
     const music = document.getElementById('bg-music');
     const container = document.querySelector('.container');
@@ -300,7 +313,7 @@
         intro.classList.add('fade-out');
     }, 1000);
 
-    // After fade out of 2 seconds change to main content and music
+    // After fade out of 2 seconds change to main letter and play the music
     setTimeout(() => {
         intro.style.display = 'none';
         container.style.display = 'block';
