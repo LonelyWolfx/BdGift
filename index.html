@@ -2,325 +2,426 @@
 <html lang="en">
 
 <head>
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Shiny Emerald</title>
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <!--CSS fun, yaaaaaay...-->
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Playfair Display', serif;
-      color: #e0ffe6;
-      background: linear-gradient(rgba(0, 0, 20, 0.8), rgba(0, 0, 30, 0.9)), 
-                  url('https://static.vecteezy.com/system/resources/thumbnails/054/390/088/small_2x/the-milky-way-galaxy-and-stars-in-the-night-sky-photo.jpg');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      overflow-x: hidden;
-    }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 4rem 2rem;
-      background: rgba(0, 20, 20, 0.6);
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0, 255, 128, 0.3);
-      animation: fadeIn 2s ease-in-out;
-      position: relative;
-      z-index: 1;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Shine of an Emerald</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!--CSS fun, yaaaaaay...-->
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Playfair Display', serif;
+            color: #e0ffe6;
+            background: linear-gradient(rgba(0, 0, 20, 0.8), rgba(0, 0, 30, 0.9)),
+                url('https://static.vecteezy.com/system/resources/thumbnails/054/390/088/small_2x/the-milky-way-galaxy-and-stars-in-the-night-sky-photo.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
 
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      color: #7fffd4;
-      margin-bottom: 2rem;
-      text-shadow: 0 0 10px #50fa7b;
-    }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 4rem 2rem;
+            background: rgba(0, 20, 20, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 255, 128, 0.3);
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
 
-    p {
-      margin-bottom: 1.6rem;
-      font-size: 1.15rem;
-      line-height: 1.8;
-    }
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #7fffd4;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px #50fa7b;
+        }
 
-    .quote {
-      text-align: center;
-      font-style: italic;
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      color: #b2ffcc;
-    }
+        p {
+            margin-bottom: 1.6rem;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .quote {
+            text-align: center;
+            font-style: italic;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: #b2ffcc;
+        }
 
-    .floating-stars {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
 
-    .emerald {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(ellipse at center, #7fffd4 0%, #009977 70%, #004d3f 100%);
-      border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
-      animation: floatEmerald 10s linear infinite;
-      opacity: 0.7;
-    }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    @keyframes floatEmerald {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
-      100% { transform: translateY(0) rotate(360deg); }
-    }
+        .floating-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    #intro-screen {
-      position: fixed;
-      z-index: 999;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(180deg, #001010, #003333);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 1s ease, visibility 1s ease;
-    }
+        .emerald {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(ellipse at center, #7fffd4 0%, #009977 70%, #004d3f 100%);
+            border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
+            animation: floatEmerald 10s linear infinite;
+            opacity: 0.7;
+        }
 
-    #gift-box {
-    width: 200px;
-    height: auto;
-    cursor: pointer;
-    transition: transform 1s ease;
-    }
+        @keyframes floatEmerald {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
 
-    .unwrap-animation {
-    animation: unwrap 1s forwards;
-    }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
 
-    @keyframes unwrap {
-    0% {
-        transform: scale(1) rotate(0deg);
-    }
-    50% {
-        transform: scale(1.2) rotate(10deg);
-    }
-    100% {
-        transform: scale(0) rotate(360deg);
-        opacity: 0;
-    }
-    }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
 
-    #intro-screen.fade-out {
-    opacity: 0;
-    visibility: hidden;
-    }
-  </style>
-  <script async src="https://cdn.counter.dev/script.js" data-id="89a7050c-1d6f-4bff-8475-7f1a1d47256a" data-utcoffset="-7"></script>
+        #intro-screen {
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(180deg, #001010, #003333);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        #gift-box {
+            width: 200px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 1s ease;
+        }
+
+        .unwrap-animation {
+            animation: unwrap 1s forwards;
+        }
+
+        @keyframes unwrap {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.2) rotate(10deg);
+            }
+
+            100% {
+                transform: scale(0) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        #intro-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #secret-icon {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        #secret-icon:hover {
+            opacity: 1;
+        }
+
+        .pixel-sona {
+            width: 64px;
+            height: 64px;
+            background-image: url('Sona.png');
+            background-size: cover;
+        }
+
+        #secret-message {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #aaffee;
+            border: 2px solid #00ffcc;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Georgia', serif;
+            font-size: 1.1em;
+            max-width: 280px;
+            text-align: center;
+            z-index: 200;
+            animation: fadeIn 1.3s ease-in-out;
+        }
+    </style>
+    <script async src="https://cdn.counter.dev/script.js" data-id="89a7050c-1d6f-4bff-8475-7f1a1d47256a"
+        data-utcoffset="-7"></script>
 </head>
 
 <body>
-  <audio id="bg-music" autoplay loop muted>
-    <source src="assets/audio/APieceForYou.mp3" type="audio/mpeg">
-    No music?
-  </audio>
+    <audio id="bg-music" autoplay loop muted>
+        <source src="assets/audio/APieceForYou.mp3" type="audio/mpeg">
+        No music?
+    </audio>
 
-  <canvas class="floating-stars"></canvas>
+    <canvas class="floating-stars"></canvas>
 
-  <div id="intro-screen">
-    <img id="gift-box" src="assets/images/Gift.gif" alt="A gift for you" />
-  </div>
-  
-  <div class="container">
-    <h1>Bajo la luz de una Esmeralda</h1>
-    <p>Así como el destello del cuerpo celestial que nos indica el amanecer de un nuevo día se posa sobre ti una vez más, la luz ténue de tu ser ilumina con vasta intensidad la existencia de los seres que tienen la dicha de compartir tu presencia.</p>
-    <p>Día a día, te entregas a este plano existencial donde vives diversas experiencias, trazando el camino a un futuro que anhelas, viviendo a la merced de un sueño, uno que, con cada paso que tomas, se convierte menos en una ilusión y más en una promesa.</p>
-    <p>Tu ser es hogar de sentimientos genuinos, no guiados por la razón, sino por el susurro noble de tu corazón; Positivismo el cual contagia felicidad a todos aquellos que te rodean, un carisma que se complementa perfectamente con tu personalidad, muchos talentos los cuales siempre son dignos de reconocimiento y apreciación, una bondad sincera que no discrimina a nadie en particular e irradia una ternura indescriptible, un cariño que es tan vasto como el mar de estrellas que nos acompaña por las noches, una personalidad muy particular la cual es confidente, divertida y refinada; Y, como la esmeralda, tu presencia irradia una luz serena, pero que a la vez, deslumbra por la calidez que guardas en tu interior.</p>
+    <div id="intro-screen">
+        <img id="gift-box" src="assets/images/Gift.gif" alt="A gift for you" />
+    </div>
 
-    <p>Admiración y mucho cariño son algunas de las palabras que se acercan a lo que siento al tener el privilegio de compartir cualquier momento contigo. Tu positivismo siempre ha sido un regalo para mi, el cual me ha inspirado a encontrar la belleza en lo cotidiano, así como tus reflexiones sobre la vida y comentarios hacia mi misma persona me han llenado de una felicidad que es difícil de describir en simples palabras. El pasar de tu presencia en mi vida ya ha dejado una huella serena pero imborrable, como los trazos suaves de una joya sobre el cristal.</p>
+    <div class="container">
+        <h1>El brillo de una Esmeralda</h1>
+        <p>Así como el destello del cuerpo celestial que nos indica el amanecer de un nuevo día se posa sobre ti una vez
+            más, la luz ténue de tu ser ilumina con vasta intensidad la existencia de los seres que tienen la dicha de
+            compartir tu presencia.</p>
+        <p>Día a día, te entregas a este plano existencial donde vives diversas experiencias, trazando el camino a un
+            futuro que anhelas, viviendo a la merced de un sueño, uno que, con cada paso que tomas, se convierte menos
+            en una ilusión y más en una promesa.</p>
+        <p>Tu ser es hogar de sentimientos genuinos, no guiados por la razón, sino por el susurro noble de tu corazón;
+            Positivismo el cual contagia felicidad a todos aquellos que te rodean, un carisma que se complementa
+            perfectamente con tu personalidad, muchos talentos los cuales siempre son dignos de reconocimiento y
+            apreciación, una bondad sincera que no discrimina a nadie en particular e irradia una ternura
+            indescriptible, un cariño que es tan vasto como el mar de estrellas que nos acompaña por las noches, una
+            personalidad muy particular la cual es confidente, divertida y refinada; Y, como la esmeralda, tu presencia
+            irradia una luz serena, pero que a la vez, deslumbra por la calidez que guardas en tu interior.</p>
 
-    <p>Quiero darte las gracias por cada gesto de amabilidad, por cada palabra de aliento que me ha motivado a dar lo mejor de mi en tiempos donde más lo necesitaba, y por demostrarme que el tiempo que compartimos juntos es un tesoro que no se compara a ningún otro. Tu presencia transforma los momentos más monótonos en experiencias llenas de color, y tu cariño es el regalo más sincero que he recibido en mucho tiempo.</p>
+        <p>Admiración y mucho cariño son algunas de las palabras que se acercan a lo que siento al tener el privilegio
+            de compartir cualquier momento contigo. Tu positivismo siempre ha sido un regalo para mi, el cual me ha
+            inspirado a encontrar la belleza en lo cotidiano, así como tus reflexiones sobre la vida y comentarios hacia
+            mi misma persona me han llenado de una felicidad que es difícil de describir en simples palabras. El pasar
+            de tu presencia en mi vida ya ha dejado una huella serena pero imborrable, como los trazos suaves de una
+            joya sobre el cristal.</p>
 
-    <p>Deseo de todo corazón que cada año que se avecine te regale nuevos motivos para sonreír, que los sueños que cultives con tanto esmero florezcan en todo su esplendor, y, confío ciegamente en que seguirás brillando intensamente como la gema preciosa que eres.</p>
+        <p>Quiero darte las gracias por cada gesto de amabilidad, por cada palabra de aliento que me ha motivado a dar
+            lo mejor de mi en tiempos donde más lo necesitaba, y por demostrarme que el tiempo que compartimos juntos es
+            un tesoro que no se compara a ningún otro. Tu presencia transforma los momentos más monótonos en
+            experiencias llenas de color, y tu cariño es el regalo más sincero que he recibido en mucho tiempo.</p>
 
-    <p>Que la bendición de papá Faker te acompañe siempre, y espero que nunca falte alguien en tu vida que te recuerde lo especial que eres, y de no tener a alguien que lo haga, ten por seguro que yo lo haré por ti.</p>
+        <p>Deseo de todo corazón que cada año que se avecine te regale nuevos motivos para sonreír, que los sueños que
+            cultives con tanto esmero florezcan en todo su esplendor, y, confío ciegamente en que seguirás brillando
+            intensamente como la gema preciosa que eres.</p>
 
-    <p class="quote">“The most precious emerald isn’t the one that blinds with brilliance, but the one that returns a soft and warm shine to those who behold it.”</p>
-  </div>
+        <p>Que la bendición de papá Faker te acompañe siempre, y espero que nunca falte alguien en tu vida que te
+            recuerde lo especial que eres, y de no tener a alguien que lo haga, ten por seguro que yo lo haré por ti.
+        </p>
 
-  <script>
-    const canvas = document.querySelector('.floating-stars');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-    let emeralds = [];
+        <p class="quote">“The most precious emerald isn't the one that blinds with brilliance, but the one that returns
+            a soft and warm shine to those who behold it.”</p>
 
-    //Redibuja toda la escena dentro del canvas cada que se presenta el evento resize (cambio de resolución en computadora y celular)
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      createStars(169);
-      createEmeralds(30);
-    }
+        <div id="secret-icon" title="¡Mira! Una Sona, toda chiquita, toda bonita">
+            <div class="pixel-sona"></div>
+        </div>
 
-    //Crea el espacio donde estarán las estrellas con tamaño aleatorio
-    function createStars(count) {
-      stars = [];
-      for (let i = 0; i < count; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 1.5 + 0.5,
-          alpha: Math.random(),
-          dx: (Math.random() - 0.5) * 0.2,
-          dy: (Math.random() - 0.5) * 0.2
-        });
-      }
-    }
+        <div id="secret-message">
+            <p>Vuela alto.. como en nuestros corazones, los cielos siempre tendrán un lugar para ti.</p>
+        </div>
+    </div>
 
-    //Crea el espacio de dibujado para las esmeraldas
-    function createEmeralds(count) {
-      emeralds = [];
-      for (let i = 0; i < count; i++) {
-        emeralds.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          baseY: Math.random() * canvas.height,
-          offset: Math.random() * 100,
-          size: Math.random() * 8 + 8 
-        });
-      }
-    }
+    <script>
+        const canvas = document.querySelector('.floating-stars');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        let emeralds = [];
 
-    //Se dibujan las estrellas con su respectivo camino aleatorio
-    function drawStars() {
-      for (let star of stars) {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-        ctx.fill();
-  
-        star.x += star.dx;
-        star.y += star.dy;
-  
-        if (star.x < 0 || star.x > canvas.width || star.y < 0 || star.y > canvas.height) {
-          star.x = Math.random() * canvas.width;
-          star.y = Math.random() * canvas.height;
+        //Redibuja toda la escena dentro del canvas cada que se presenta el evento resize (cambio de resolución en computadora y celular)
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            createStars(169);
+            createEmeralds(30);
         }
-      }
-    }
 
-    //Se crea el evento para dibujar las esmeraldas con efecto flotante
-    //Dentro de este evento, se dibujan las esmeraldas llamando al evento DrawPixelEmerald
-    function drawEmeralds(frame) {
-      for (let emerald of emeralds) {
-        const floatY = Math.sin((frame + emerald.offset) / 50) * 5;
-        drawPixelEmerald(emerald.x, emerald.baseY + floatY, emerald.size);
-      }
-    } 
+        //Crea el espacio donde estarán las estrellas con tamaño aleatorio
+        function createStars(count) {
+            stars = [];
+            for (let i = 0; i < count; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5 + 0.5,
+                    alpha: Math.random(),
+                    dx: (Math.random() - 0.5) * 0.2,
+                    dy: (Math.random() - 0.5) * 0.2
+                });
+            }
+        }
 
-    //Se dibujan las esmeraldas a mano (en pixel art style)
-    function drawPixelEmerald(x, y, size) {
-        const px = size / 4; // 4x5 grid
+        //Crea el espacio de dibujado para las esmeraldas
+        function createEmeralds(count) {
+            emeralds = [];
+            for (let i = 0; i < count; i++) {
+                emeralds.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    baseY: Math.random() * canvas.height,
+                    offset: Math.random() * 100,
+                    size: Math.random() * 8 + 8
+                });
+            }
+        }
 
-        // Shading
-        const light = '#00ffcc'; // highlight
-        const mid = '#00cc99';   // main color
-        const dark = '#00775f';  // shadow
+        //Se dibujan las estrellas con su respectivo camino aleatorio
+        function drawStars() {
+            for (let star of stars) {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+                ctx.fill();
 
-        // Row 1
-        ctx.fillStyle = light;
-        ctx.fillRect(x + px, y, px, px);
-        ctx.fillRect(x + 2 * px, y, px, px);
+                star.x += star.dx;
+                star.y += star.dy;
 
-        // Row 2
-        ctx.fillStyle = mid;
-        ctx.fillRect(x, y + px, px, px);
-        ctx.fillRect(x + 3 * px, y + px, px, px);
-        ctx.fillStyle = light;
-        ctx.fillRect(x + px, y + px, px, px);
-        ctx.fillStyle = mid;
-        ctx.fillRect(x + 2 * px, y + px, px, px);
+                if (star.x < 0 || star.x > canvas.width || star.y < 0 || star.y > canvas.height) {
+                    star.x = Math.random() * canvas.width;
+                    star.y = Math.random() * canvas.height;
+                }
+            }
+        }
 
-        // Row 3
-        ctx.fillStyle = mid;
-        ctx.fillRect(x, y + 2 * px, px, px);
-        ctx.fillRect(x + 3 * px, y + 2 * px, px, px);
-        ctx.fillStyle = light;
-        ctx.fillRect(x + px, y + 2 * px, px, px);
-        ctx.fillStyle = dark;
-        ctx.fillRect(x + 2 * px, y + 2 * px, px, px);
+        //Se crea el evento para dibujar las esmeraldas con efecto flotante
+        //Dentro de este evento, se dibujan las esmeraldas llamando al evento DrawPixelEmerald
+        function drawEmeralds(frame) {
+            for (let emerald of emeralds) {
+                const floatY = Math.sin((frame + emerald.offset) / 50) * 5;
+                drawPixelEmerald(emerald.x, emerald.baseY + floatY, emerald.size);
+            }
+        }
 
-        // Row 4
-        ctx.fillStyle = dark;
-        ctx.fillRect(x, y + 3 * px, px, px);
-        ctx.fillRect(x + 3 * px, y + 3 * px, px, px);
-        ctx.fillStyle = mid;
-        ctx.fillRect(x + px, y + 3 * px, px, px);
-        ctx.fillStyle = dark;
-        ctx.fillRect(x + 2 * px, y + 3 * px, px, px);
+        //Se dibujan las esmeraldas a mano (en pixel art style)
+        function drawPixelEmerald(x, y, size) {
+            const px = size / 4; // 4x5 grid
 
-        // Row 5
-        ctx.fillStyle = dark;
-        ctx.fillRect(x + px, y + 4 * px, px, px);
-        ctx.fillRect(x + 2 * px, y + 4 * px, px, px);
-    }
+            // Shading
+            const light = '#00ffcc'; // highlight
+            const mid = '#00cc99';   // main color
+            const dark = '#00775f';  // shadow
 
-    //Self explanatory, dibuja toda la escena del canvas
-    function drawScene(frame = 0) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawStars();
-      drawEmeralds(frame);
-      requestAnimationFrame(() => drawScene(frame + 1));
-    }
+            // Row 1
+            ctx.fillStyle = light;
+            ctx.fillRect(x + px, y, px, px);
+            ctx.fillRect(x + 2 * px, y, px, px);
 
-    //Event listener para el evento resize 
-    window.addEventListener('resize', resizeCanvas);
-  
-    resizeCanvas();
-    drawScene();
+            // Row 2
+            ctx.fillStyle = mid;
+            ctx.fillRect(x, y + px, px, px);
+            ctx.fillRect(x + 3 * px, y + px, px, px);
+            ctx.fillStyle = light;
+            ctx.fillRect(x + px, y + px, px, px);
+            ctx.fillStyle = mid;
+            ctx.fillRect(x + 2 * px, y + px, px, px);
 
-    //Animated GiftBox & background music handler <- Agregado después de la carta
-    //Debido a que primero tiene que haber una interacción con la página para 
-    //reproducir un audio, si no el navegador bloquea la música automáticamente
-    //sin la posibilidad de reproducirla subsecuentemente
-    //Pero al agregar algo así se mira más bonito :D
-    const intro = document.getElementById('intro-screen');
-    const music = document.getElementById('bg-music');
-    const container = document.querySelector('.container');
-    const giftBox = document.getElementById('gift-box');
+            // Row 3
+            ctx.fillStyle = mid;
+            ctx.fillRect(x, y + 2 * px, px, px);
+            ctx.fillRect(x + 3 * px, y + 2 * px, px, px);
+            ctx.fillStyle = light;
+            ctx.fillRect(x + px, y + 2 * px, px, px);
+            ctx.fillStyle = dark;
+            ctx.fillRect(x + 2 * px, y + 2 * px, px, px);
 
-    container.style.display = 'none';
+            // Row 4
+            ctx.fillStyle = dark;
+            ctx.fillRect(x, y + 3 * px, px, px);
+            ctx.fillRect(x + 3 * px, y + 3 * px, px, px);
+            ctx.fillStyle = mid;
+            ctx.fillRect(x + px, y + 3 * px, px, px);
+            ctx.fillStyle = dark;
+            ctx.fillRect(x + 2 * px, y + 3 * px, px, px);
 
-    giftBox.addEventListener('click', () => {
-    giftBox.classList.add('unwrap-animation');
+            // Row 5
+            ctx.fillStyle = dark;
+            ctx.fillRect(x + px, y + 4 * px, px, px);
+            ctx.fillRect(x + 2 * px, y + 4 * px, px, px);
+        }
 
-    // Animation timer
-    setTimeout(() => {
-        intro.classList.add('fade-out');
-    }, 1000);
+        //Self explanatory, dibuja toda la escena del canvas
+        function drawScene(frame = 0) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawStars();
+            drawEmeralds(frame);
+            requestAnimationFrame(() => drawScene(frame + 1));
+        }
 
-    // After fade out of 2 seconds change to main letter and play the music
-    setTimeout(() => {
-        intro.style.display = 'none';
-        container.style.display = 'block';
-        music.muted = false;
-        music.play();
-    }, 2000);
-    });
-  </script>
+        //Event listener para el evento resize 
+        window.addEventListener('resize', resizeCanvas);
+
+        resizeCanvas();
+        drawScene();
+
+        //Animated GiftBox & background music handler <- Agregado después de la carta
+        //Debido a que primero tiene que haber una interacción con la página para 
+        //reproducir un audio, si no el navegador bloquea la música automáticamente
+        //sin la posibilidad de reproducirla subsecuentemente
+        //Pero al agregar algo así se mira más bonito :D
+        const intro = document.getElementById('intro-screen');
+        const music = document.getElementById('bg-music');
+        const container = document.querySelector('.container');
+        const giftBox = document.getElementById('gift-box');
+
+        container.style.display = 'none';
+
+        giftBox.addEventListener('click', () => {
+            giftBox.classList.add('unwrap-animation');
+
+            // Animation timer
+            setTimeout(() => {
+                intro.classList.add('fade-out');
+            }, 1000);
+
+            // After fade out of 2 seconds change to main letter and play the music
+            setTimeout(() => {
+                intro.style.display = 'none';
+                container.style.display = 'block';
+                music.muted = false;
+                music.play();
+            }, 2000);
+        });
+        document.getElementById("secret-icon").addEventListener("click", () => {
+            const msg = document.getElementById("secret-message");
+            msg.style.display = msg.style.display === "block" ? "none" : "block";
+        });
+        document.getElementById("secret-message").addEventListener("click", () => {
+            const msg = document.getElementById("secret-message");
+            msg.style.display = msg.style.display === "block" ? "none" : "block";
+        });
+    </script>
 </body>
+
 </html>
